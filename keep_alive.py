@@ -7,7 +7,7 @@ app = Flask('')
 
 @app.route('/')
 def home():
-	return 'im going to infiltrate the fbi servers ' 'and steal your mother'
+	return '!!!OIKBOT ACTIVE AND READY!!!'
 
 def run():
   app.run(
