@@ -1,4 +1,3 @@
-
 import os
 import time
 import discord
@@ -6,22 +5,15 @@ import discord.ext
 from discord.utils import get
 from discord.ext import commands, tasks
 from discord.ext.commands import has_permissions,  CheckFailure, check
-from async_timeout import timeout
 from keep_alive import keep_alive
 
 client = discord.Client()
 
 client = commands.Bot(command_prefix = '`')
 
-
-
-from discord.ext import commands
-
 @client.command()
-async def hello(ctx):
-   await ctx.send("im hiding...")
-   time.sleep(2)
-   await ctx.send("im screwed, aren't I?")
+async def cmds(ctx):
+    await ctx.send("All commands start with this prefix ` | Commands -> ping, wakeup, car, sus, dialup, crackhead, sussy, dontlookatit, GLaDOS, win98, nesquik, liminal, mewhenangy, sussysus, warzone, funnycar, canoe, win7, kpopstan, wheatley, bueno, fh4, slapschickonk, smiledog, analogfear, whybillgates, oikmosfeetpics, yoga, comedy, whobetter, tacos, jeb_boat, korn, lilshitz, ifeelya, gamingpc | Thats all cmds")
 
 @client.command()
 async def ping(ctx):
@@ -39,6 +31,7 @@ async def car(ctx):
 @client.command()
 async def sus(ctx):
     await ctx.send(file=discord.File('files/amogus.gif'))
+    await ctx.send(file=discord.File('files/among-us-dance.gif'))
     await ctx.send("licnenkol") 
 
 @client.command()
@@ -55,12 +48,6 @@ async def crackhead(ctx):
 async def sussy(ctx):
     await ctx.send(file=discord.File('files/susy slomo.mp4'))
     await ctx.send("sus") 
-
-
-@client.command()
-async def dontlookatit(ctx):
-    await ctx.send(file=discord.File('files/ARG qr.png'))
-    await ctx.send(".....................") 
 
 @client.command()
 async def GLaDOS(ctx):
@@ -79,6 +66,10 @@ async def GLaDOS(ctx):
     time.sleep(2)
     await ctx.send(file=discord.File('files/wheatley.jpg'))
     await ctx.send("You did WHAT?!")
+    await ctx.send(file=discord.File('files/profile ultimate.png'))
+    await ctx.send("a̴n̵d̷ ̴i̴ ̵w̵i̵l̷l̸ ̸f̴u̷c̷k̴i̸n̴g̵ ̸d̵o̵ ̴i̸t̴ ̵a̴g̷a̸i̴n̵")
+
+
 
 @client.command()
 async def win98(ctx):
@@ -218,6 +209,42 @@ async def ifeelya(ctx):
     await ctx.send(file=discord.File('files/sad.jpg'))
     await ctx.send("I feel this man.")
 
+@client.command()
+async def gamingpc(ctx):
+    await ctx.send(file=discord.File('files/mygraphics.png'))
+    await ctx.send("Oikmo's Gaming pc")
+    #i wish tho
+
+@client.command()
+async def hmmm(ctx):
+    await ctx.send(file=discord.File('files/devil.png'))
+    await ctx.send(file=discord.File('files/muscular.png'))
+    await ctx.send(file=discord.File('files/lesson.png'))
+    await ctx.send(file=discord.File('files/beeep.png'))
+    await ctx.send(file=discord.File('files/cuthulu.png'))
+    await ctx.send(file=discord.File('files/cult.png'))
+    await ctx.send(file=discord.File('files/X.png'))
+    await ctx.send(file=discord.File('files/knockers.png'))
+    await ctx.send("interesting")
+
+@client.command()
+async def GLaDOS_facts(ctx):
+    await ctx.send("Did you know that GLaDOS actually means : Genetic Lifeform and Disk Operating System?")
+    await ctx.send("Did you know that GLaDOS in Portal : Still Alive (or just called Portal) is different than the one in Portal 2? Look!")
+    await ctx.send(file=discord.File('files/biggirlog.png'))
+    time.sleep(1)
+    await ctx.send("Portal : Still Alive")
+    time.sleep(1)
+    await ctx.send(file=discord.File('files/biggirl.png'))
+    time.sleep(1)
+    await ctx.send("Portal 2")
+    time.sleep(1)
+    await ctx.send("Interesting Huh?")
+
+@client.command()
+async def JUANNO(ctx):
+    await ctx.send(file=discord.File('files/JUANNO.mp4'))
+    await ctx.send("NO JUAN NO") 
+
 keep_alive()
 client.run(os.getenv("TOKEN"))
-
