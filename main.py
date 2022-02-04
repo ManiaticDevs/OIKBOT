@@ -12,10 +12,6 @@ client = discord.Client()
 client = commands.Bot(command_prefix = '`')
 
 @client.command()
-async def cmds(ctx):
-    await ctx.send("All commands start with this prefix ` | Commands -> ping, wakeup, car, sus, dialup, crackhead, sussy, dontlookatit, GLaDOS, win98, nesquik, liminal, mewhenangy, sussysus, warzone, funnycar, canoe, win7, kpopstan, wheatley, bueno, fh4, slapschickonk, smiledog, analogfear, whybillgates, oikmosfeetpics, yoga, comedy, whobetter, tacos, jeb_boat, korn, lilshitz, ifeelya, gamingpc | Thats all cmds")
-
-@client.command()
 async def ping(ctx):
     await ctx.send("pong!") 
 
@@ -246,5 +242,27 @@ async def JUANNO(ctx):
     await ctx.send(file=discord.File('files/JUANNO.mp4'))
     await ctx.send("NO JUAN NO") 
 
-keep_alive()
+@client.command()
+async def randy(ctx):
+    await ctx.send(file=discord.File('files/randy.mp4'))
+    await ctx.send("MAGNUMOPUS (opus)")
+
+@client.command()
+async def hm(ctx):
+    await ctx.send(file=discord.File('files/ghosteatbooty.mp4'))
+    await ctx.send("charlie wtf u doin")
+
+@client.command()
+async def baby(ctx):
+    await ctx.send(file=discord.File('files/suckitbaby.mp4'))
+    await ctx.send("suck it baby")
+
+@client.command()
+async def cursed(ctx):
+    await ctx.send("```BEFORE YOU SEE THIS VIDEO...```")
+    time.sleep(1)
+    await ctx.send("please try not to die from 'wtf' or laughter")
+    time.sleep(3)
+    await ctx.send(file=discord.File('files/funny_hahaha.mp4'))
+
 client.run(os.getenv("TOKEN"))

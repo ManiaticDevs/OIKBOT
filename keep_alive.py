@@ -7,7 +7,7 @@ app = Flask('')
 
 @app.route('/')
 def home():
-	return '!!!OIKBOT ACTIVE AND READY!!!'
+	return '<big>Bot Online</big>'
 
 def run():
   app.run(
