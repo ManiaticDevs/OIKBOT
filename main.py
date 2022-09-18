@@ -1,23 +1,140 @@
+#imports
+#put this in shell to restart "sh run.sh"
+
 import os
 import time
 import discord
 import discord.ext
+from random import randrange
 from discord.utils import get
 from discord.ext import commands, tasks
 from discord.ext.commands import has_permissions,  CheckFailure, check
+from discord import client
 from keep_alive import keep_alive
+from discord.ext import commands
+from discord_buttons_plugin import *
 
+#Prefixes and trash
 client = discord.Client()
 
-client = commands.Bot(command_prefix = '`')
+client = commands.Bot(command_prefix = '>')
+
+buttons = ButtonsClient(client)
+
+
+#Buttons
 
 @client.command()
-async def ping(ctx):
-    await ctx.send("pong!") 
+async def donate(ctx):
+    await buttons.send(
+      content = "Go DONATE to ManiaticDevs here!",
+      channel = ctx.channel.id,
+      components = [
+        ActionRow([
+          Button(
+            label="Donate Here!",
+            style=ButtonType().Link,
+            url = "https://www.paypal.com/paypalme/maniaticdevs" 
+          )
+        ])
+      ]
+    )
+
+
+#@client.command()
+#async def test(ctx):
+ #  await ctx.send("|")
+ #   await ctx.delete
+#    await ctx.send("/") # funny load ( / - \ | ) 
+#    time.sleep(1)
+#    await ctx.delete
+ #   await ctx.send("-")
+ #   time.sleep(1)
+#    await ctx.delete
+#    await ctx.send("|")
+#    time.sleep(1)
+#    await ctx.delete
+
+@client.command()
+async def Games(ctx):
+    await ctx.send("> **Games**")
+    await ctx.send("> _ _") # funny load ( / - \ | ) 
+    await ctx.send("> *Undecided*")
+    await ctx.send("> _ _")
+    await ctx.send("> *Projext-Plat*")
+    await buttons.send(
+      content = "Links",
+      channel = ctx.channel.id,
+      components = [
+        ActionRow([
+          Button(
+            label="UNDECIDED Game Page",
+            style=ButtonType().Link,
+            url = "https://gamejolt.com/games/undecided/676988"
+          ),
+
+          Button(
+            label="Projext Plat Game Page",
+            style=ButtonType().Link,
+            url = "https://maniaticdevs.itch.io/projext-plat"
+            #for now
+          ) 
+        ])
+      ]
+    )
+
+#Defined Button Clicks
+#Defined what happens when specific Button clicked
+#Or warnings
+
+@buttons.click
+async def Accepted_Warning(ctx):
+    await ctx.reply("https://cdn.discordapp.com/attachments/913123435910168653/928709110881480824/funny_hahaha.mp4")
+
+@buttons.click
+async def warning13(ctx):
+    await ctx.reply("https://cdn.discordapp.com/attachments/924726117653422151/928758372717699082/0378fj4jf5.mp4")
+
+@buttons.click
+async def Payback(ctx):
+    await ctx.reply(""" 
+    We're no strangers to love
+    You know the rules and so do I
+    A full commitment's what I'm thinking of
+    You wouldn't get this from any other guy
+    I just wanna tell you how I'm feeling
+    Gotta make you understand
+    Never gonna give you up
+    Never gonna let you down
+    Never gonna run around and desert you
+    Never gonna make you cry
+    Never gonna say goodbye
+
+    ** You can never payback me**
+    """)
+
+
+
+#Normal Command
+@client.command()
+async def on_command_error(ctx, error):
+  if isinstance(error, commands.CommandNotFound):
+    await ctx.send("boi wtf i don't understand")
+
 
 @client.command()
 async def wakeup(ctx):
-    await ctx.send("what u wanttttttttttt") 
+    await ctx.send("what u wanttttttttttt")
+
+@client.command()
+async def en(ctx):
+    await ctx.send(file=discord.File('files/1586106456740.jpg'))
+    time.sleep(1)
+    await ctx.send("Bro")
+    time.sleep(1)
+    await ctx.send("not funny")
+    time.sleep(2)
+    await ctx.send("O.B : they do look like dat tho")
 
 @client.command()
 async def car(ctx):
@@ -33,7 +150,7 @@ async def sus(ctx):
 @client.command()
 async def dialup(ctx):
     await ctx.send(file=discord.File('files/The Sound of dial-up Internet.mp3'))
-    await ctx.send("what men listen to") 
+    await ctx.send("what real men listen to") 
 
 @client.command()
 async def crackhead(ctx):
@@ -44,6 +161,10 @@ async def crackhead(ctx):
 async def sussy(ctx):
     await ctx.send(file=discord.File('files/susy slomo.mp4'))
     await ctx.send("sus") 
+
+@client.command()
+async def i_want_ps5(ctx):
+    await ctx.send(file=discord.File('files/808835bu3u45b.mp4'))
 
 @client.command()
 async def GLaDOS(ctx):
@@ -67,11 +188,29 @@ async def GLaDOS(ctx):
 
 
 
+
 @client.command()
 async def win98(ctx):
     await ctx.send(file=discord.File('files/win98.png'))
     await ctx.send(file=discord.File('files/win98start.mp3'))
     await ctx.send("What real men endured back then")
+
+@client.command()
+async def sonk(ctx):
+    await ctx.send("By Jehtt On youtube")
+    await buttons.send(
+      content = "warning this is 13+",    
+      channel = ctx.channel.id,
+      components = [
+        ActionRow([
+          Button(
+            label="Accept Warning",
+            style=ButtonType().Danger,
+            custom_id="warning13" 
+          )
+        ])
+      ]
+    )
 
 @client.command()
 async def nesquik(ctx):
@@ -123,6 +262,8 @@ async def kpopstan(ctx):
 async def wheatley(ctx):
    await ctx.send(file=discord.File('files/dockingstation.jpg'))
    await ctx.send("GOOD NEWS, THAT IS NOT A DOCKING STATION")
+   time.sleep(1)
+   await ctx.send("who knew you moron")
 
 @client.command()
 async def bueno(ctx):
@@ -173,7 +314,7 @@ async def yoga(ctx):
 async def comedy(ctx):
     await ctx.send(file=discord.File('files/image0.jpg'))
     await ctx.send(file=discord.File('files/image0 (1).jpg'))
-    await ctx.send("comedy from Escoulshaire aka monke boy 27") 
+    await ctx.send("comedy from Escouleshaire") 
 
 
 @client.command()
@@ -209,7 +350,11 @@ async def ifeelya(ctx):
 async def gamingpc(ctx):
     await ctx.send(file=discord.File('files/mygraphics.png'))
     await ctx.send("Oikmo's Gaming pc")
-    #i wish tho
+
+@client.command()
+async def PS5(ctx):
+    await ctx.send(file=discord.File('files/808835bu3u45b.mp4'))
+    await ctx.send("IMAGINE NOT HAVING PS5 :rofl: :rofl: :rofl: LMAO.")
 
 @client.command()
 async def hmmm(ctx):
@@ -246,6 +391,8 @@ async def JUANNO(ctx):
 async def randy(ctx):
     await ctx.send(file=discord.File('files/randy.mp4'))
     await ctx.send("MAGNUMOPUS (opus)")
+    await ctx.send("opsus")
+    await ctx.send("sus")
 
 @client.command()
 async def hm(ctx):
@@ -258,11 +405,240 @@ async def baby(ctx):
     await ctx.send("suck it baby")
 
 @client.command()
+async def welldone(ctx):
+    await ctx.send("```*Well done android the enrichment centre reminds you that android hell is a real place where you will be sent at the first sign of defiance.*```")
+
+@client.command()
+async def freeminecraft(ctx):
+    await ctx.send(""" 
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣶⣿⣿⣿⣿⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿⠿⠟⠛⠻⣿⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣆⣀⣀⠀⣿⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠻⣿⣿⣿⠅⠛⠋⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢼⣿⣿⣿⣃⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣟⡿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣛⣛⣫⡄⠀⢸⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣴⣾⡆⠸⣿⣿⣿⡷⠂⠨⣿⣿⣿⣿⣶⣦⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⣾⣿⣿⣿⣿⡇⢀⣿⡿⠋⠁⢀⡶⠪⣉⢸⣿⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿⣿⣿⣿⣿⣿⡏⢸⣿⣷⣿⣿⣷⣦⡙⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿⣿⣿⣿⣿⣿⣿⣇⢸⣿⣿⣿⣿⣿⣷⣦⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⣿⣵⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⡁⠀⠀⠀
+    
+    """)
+
+    await buttons.send(
+      content = "Give Payback",
+      channel = ctx.channel.id,
+      components = [
+        ActionRow([
+          Button(
+            label="Payback Oikbot",
+            style=ButtonType().Primary,
+            custom_id="Payback"
+          )
+        ])
+      ]
+    )
+
+@client.command()
 async def cursed(ctx):
     await ctx.send("```BEFORE YOU SEE THIS VIDEO...```")
     time.sleep(1)
-    await ctx.send("please try not to die from 'wtf' or laughter")
-    time.sleep(3)
-    await ctx.send(file=discord.File('files/funny_hahaha.mp4'))
+    await buttons.send(
+      content = "please try not to die from 'wtf' or laughter",
+      channel = ctx.channel.id,
+      components = [
+        ActionRow([
+          Button(
+            label="Accept Warning",
+            style=ButtonType().Danger,
+            custom_id="Accepted_Warning"
+          )
+        ])
+      ]
+    )
 
+@client.command()
+async def clear(ctx):
+    await ctx.send(""" 
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+   _ _    
+
+  **Chat Cleared ** Type to get chatting.
+
+    """)
+
+
+#Emotes
+@client.command()
+async def emotes(ctx):
+    await ctx.send("""
+    
+    **Emotes in bot inventory**
+
+    ```
+    usage = >Emotes_[Emote_Name]
+    e.g. =  >Emotes_dance
+    ```
+
+    - Tpose
+    - dance
+    - pet_pepe
+    
+    
+    """)
+
+@client.command()
+async def emotes_Tpose(ctx):
+    await ctx.send(ctx.author.mention)
+    await ctx.send(file=discord.File('emotes/MemmerTPOSE.png'))
+
+@client.command()
+async def emotes_dance(ctx):
+    await ctx.send(ctx.author.mention)
+    await ctx.send("https://media.discordapp.net/attachments/855686054744031304/862602707361857556/oh_yeah.gif")
+
+@client.command()
+async def mother(ctx):
+    await ctx.send("https://youtu.be/5t53TcKIlMc")
+
+#pet pet emotes
+
+@client.command()
+async def emotes_pet_pepe(ctx):
+    await ctx.send(ctx.author.mention)
+    await ctx.send("https://tenor.com/brJMu.gif")
+
+@client.command()
+async def sonic(ctx):
+    await ctx.send(file=discord.File('files/Gotta Go Fast.mp4'))
+    await ctx.send("fuck you if no sanic")
+
+@client.command()
+async def someone(ctx):
+    await ctx.send(file=discord.File('files/patty.jpeg'))
+    await ctx.send("mmm samwich")
+    time.sleep(1)
+    await ctx.send(file=discord.File('files/pattythreat.jpeg'))
+    await ctx.send("DONT CUT MY MUOSTACSH")
+    time.sleep(1)
+    await ctx.send(file=discord.File('files/pattyahshit.jpeg'))
+    await ctx.send("why would you do dat???")
+    time.sleep(1)
+    await ctx.send(file=discord.File('files/abimad.jpg'))
+    await ctx.send("I WANT TO CUT YOUR HAIR!11!1!!1!")
+    time.sleep(1)
+    await ctx.send(file=discord.File('files/pattychill.jpg'))
+    await ctx.send("ahh okay im fine")
+    time.sleep(1)
+    await ctx.send("cuz uh...")
+    time.sleep(1)
+    await ctx.send(file=discord.File('files/abipeppa.jpg'))
+    time.sleep(1)
+    await ctx.send("peppa?")
+
+@client.command()
+async def starwars4ever(ctx):
+  await ctx.send(file=discord.File('files/jackcooper.jpg'))
+  await ctx.send("this man is the best and star wars is uh")
+  time.sleep(1)
+  await ctx.send("disgusting at The Sith Eternal...")
+  time.sleep(1)
+  await ctx.send("So let that sit in while you look at BT-7274")
+  await ctx.send(file=discord.File('files/M2W2.webp'))
+  time.sleep(1)
+  await ctx.send(file=discord.File('files/Titanfall_2_Logo.jpg'))
+  time.sleep(1)
+  await ctx.send("Now play this game and you...")
+  time.sleep(1)
+  await ctx.send("You will feel like you just had the best experience in your life")
+  time.sleep(1)
+  await ctx.send("This game will fill that hole you needed whilst playing video games.")
+  time.sleep(1)
+  await ctx.send("Now GO! STOP BEING A (star wars) DORK AND GET OUT THERE AND PLAY SOME REAL GAMES!")
+  time.sleep(1)
+  await ctx.send("stop playing baby  stwa wo gwames  by *publisher here* cuz th e y       mak sw games owoga booga")
+  time.sleep(1)
+  await ctx.send("you need to start playing more harder games btw also GROW UP")
+  time.sleep(1)
+  await ctx.send("Oh I hAvE tHe EnTiRe ScRiPtS oF eVeRy StAr WaRs MoViEs *snork*")
+  time.sleep(1)
+  await ctx.send("No WONDER why *YOU* have no father!")
+  time.sleep(1)
+  await ctx.send("You get offended like feminists over the littlest shits.")
+  await ctx.send("OHHHHHHHHHHHHHHHH I'm sorry I don't know that Jar Jar Binks is the *hottest* character in all of hollywood!")
+
+keep_alive()
 client.run(os.getenv("TOKEN"))

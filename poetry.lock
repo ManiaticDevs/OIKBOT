@@ -78,6 +78,14 @@ python-versions = "*"
 "discord.py" = ">=1.0.1"
 
 [[package]]
+name = "discord-buttons-plugin"
+version = "0.1.2"
+description = "A simple module to use for buttons in discord.py"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
 name = "discord.py"
 version = "1.6.0"
 description = "A Python wrapper for the Discord API"
@@ -187,18 +195,10 @@ python-versions = ">=3.6"
 idna = ">=2.0"
 multidict = ">=4.0"
 
-[[package]]
-name = "youtube-dl"
-version = "2021.6.6"
-description = "YouTube video downloader"
-category = "main"
-optional = false
-python-versions = "*"
-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "ec1d6b41aa49835179189b2b45db5688e56bc09b8164500d6e46e9350a76361a"
+content-hash = "bba1050a773bc221a8286ad0d1fcc9babcc6a1d095977f19b7b8c2d9c20ce6c8"
 
 [metadata.files]
 aiohttp = [
@@ -263,6 +263,10 @@ colorama = [
 discord = [
     {file = "discord-1.0.1-py3-none-any.whl", hash = "sha256:9d4debb4a37845543bd4b92cb195bc53a302797333e768e70344222857ff1559"},
     {file = "discord-1.0.1.tar.gz", hash = "sha256:ff6653655e342e7721dfb3f10421345fd852c2a33f2cca912b1c39b3778a9429"},
+]
+discord-buttons-plugin = [
+    {file = "discord_buttons_plugin-0.1.2-py3-none-any.whl", hash = "sha256:877327541b321d93707a1f9fa7b086fee19a06193ff523deb406c52ee2d53f24"},
+    {file = "discord_buttons_plugin-0.1.2.tar.gz", hash = "sha256:a0957bb4e151fdf59158b6bca65ba6238b9cb3e9f5b1e046c793d772e86eca04"},
 ]
 "discord.py" = [
     {file = "discord.py-1.6.0-py3-none-any.whl", hash = "sha256:3df148daf6fbcc7ab5b11042368a3cd5f7b730b62f09fb5d3cbceff59bcfbb12"},
@@ -441,8 +445,4 @@ yarl = [
     {file = "yarl-1.6.3-cp39-cp39-win32.whl", hash = "sha256:5b883e458058f8d6099e4420f0cc2567989032b5f34b271c0827de9f1079a424"},
     {file = "yarl-1.6.3-cp39-cp39-win_amd64.whl", hash = "sha256:4953fb0b4fdb7e08b2f3b3be80a00d28c5c8a2056bb066169de00e6501b986b6"},
     {file = "yarl-1.6.3.tar.gz", hash = "sha256:8a9066529240171b68893d60dca86a763eae2139dd42f42106b03cf4b426bf10"},
-]
-youtube-dl = [
-    {file = "youtube_dl-2021.6.6-py2.py3-none-any.whl", hash = "sha256:263e04d53fb8ba3dfbd246ad09b7d388e896c132a20cc770c26ee7684de050ac"},
-    {file = "youtube_dl-2021.6.6.tar.gz", hash = "sha256:cb2d3ee002158ede783e97a82c95f3817594df54367ea6a77ce5ceea4772f0ab"},
 ]
