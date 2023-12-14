@@ -5,13 +5,11 @@ import os
 import time
 import discord
 import discord.ext
-from random import randrange
+from discord.ext import commands
 from discord.utils import get
-from discord.ext import commands, tasks
 from discord.ext.commands import has_permissions,  CheckFailure, check
 from discord import client
 from keep_alive import keep_alive
-from discord.ext import commands
 from discord_buttons_plugin import *
 
 #Prefixes and trash
@@ -639,6 +637,11 @@ async def starwars4ever(ctx):
   time.sleep(1)
   await ctx.send("You get offended like feminists over the littlest shits.")
   await ctx.send("OHHHHHHHHHHHHHHHH I'm sorry I don't know that Jar Jar Binks is the *hottest* character in all of hollywood!")
+
+@client.command()
+async def the_star_trek(ctx):
+    await ctx.send(file=discord.File('files/Star Trek 25th.mp4'))
+    await ctx.send(file=discord.File('files/Star Trek TOS.mp4'))
 
 keep_alive()
 client.run(os.getenv("TOKEN"))
